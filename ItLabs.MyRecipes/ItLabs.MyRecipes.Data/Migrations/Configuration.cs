@@ -10,7 +10,6 @@ namespace ItLabs.MyRecipes.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            TargetDatabase = new System.Data.Entity.Infrastructure.DbConnectionInfo("RecipeDBContext");
         }
 
         protected override void Seed(ItLabs.MyRecipes.Data.RecipeDBContext context)
