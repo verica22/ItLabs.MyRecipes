@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data
 {
-    class Recipe
+    public class Recipe
     {
         public Recipe()
         {

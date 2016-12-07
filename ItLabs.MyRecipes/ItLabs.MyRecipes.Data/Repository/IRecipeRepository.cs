@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data.Repository
 {
-    interface IRecipeRepository
+   public interface IRecipeRepository
     {
         void Save(Recipe recipe);
         void Remove(int Id);

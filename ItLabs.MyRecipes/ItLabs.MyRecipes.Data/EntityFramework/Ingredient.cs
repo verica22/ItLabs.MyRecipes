@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data
 {
-    class Ingredient
+   public class Ingredient
     {
         public Ingredient()
         {

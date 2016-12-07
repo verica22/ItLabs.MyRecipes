@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Domain.DependencyInjection
 {
-    class DependencyClass
+     class DependencyClass
     {
         static void main(string[] args)
         {

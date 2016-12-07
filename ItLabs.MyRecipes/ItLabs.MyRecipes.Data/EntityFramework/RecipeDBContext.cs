@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data
 {
-    class RecipeDBContext : DbContext
+   public class RecipeDBContext : DbContext
     {
-        public RecipeDBContext() : base("RecipeDB-DataAnnotations")
+        public RecipeDBContext() : base("RecipeDBContext")
         {
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data.Repository
 {
-    class RecipeRepository : IRecipeRepository
+   public class RecipeRepository : IRecipeRepository
     {
         RecipeDBContext db = new RecipeDBContext();
         public Recipe FindById(int Id)
