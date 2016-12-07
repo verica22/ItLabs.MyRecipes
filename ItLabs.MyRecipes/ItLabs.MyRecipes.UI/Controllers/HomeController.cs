@@ -9,6 +9,13 @@ namespace ItLabs.MyRecipes.UI.Controllers
 {
     public class HomeController : Controller
     {
+        //public IRecipeRepository _recipe { get; set; }
+
+        //public HomeController(IRecipeRepository rec)
+        //{
+        //    this._recipe = rec;
+        //}
+
         //RecipeRepository repository = new RecipeRepository();
         //public ActionResult Index()
         //{
