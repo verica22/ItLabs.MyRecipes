@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\Ingredient.cs" />
-    <Compile Include="Migrations\201612070921521_Recipe.cs" />
-    <Compile Include="Migrations\201612070921521_Recipe.Designer.cs">
-      <DependentUpon>201612070921521_Recipe.cs</DependentUpon>
+    <Compile Include="Migrations\201612071105329_Initial.cs" />
+    <Compile Include="Migrations\201612071105329_Initial.Designer.cs">
+      <DependentUpon>201612071105329_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +66,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612070921521_Recipe.resx">
-      <DependentUpon>201612070921521_Recipe.cs</DependentUpon>
+    <Folder Include="sql\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612071105329_Initial.resx">
+      <DependentUpon>201612071105329_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

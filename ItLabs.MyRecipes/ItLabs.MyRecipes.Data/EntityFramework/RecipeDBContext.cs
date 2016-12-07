@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ItLabs.MyRecipes.Data.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;   
+using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data
 {
@@ -14,8 +15,8 @@ namespace ItLabs.MyRecipes.Data
 
 
         }
-        public virtual ICollection<Recipe> Recipes { get; set; }
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<Ingredient> Ingredients { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

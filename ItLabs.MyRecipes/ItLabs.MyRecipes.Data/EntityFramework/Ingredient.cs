@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ItLabs.MyRecipes.Data
 {
-   public class Ingredient
+    public class Ingredient
     {
         public Ingredient()
         {
            
         }
-        public int IngredientsId { get; set; }
-        public string IngredientsName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Measurement { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }

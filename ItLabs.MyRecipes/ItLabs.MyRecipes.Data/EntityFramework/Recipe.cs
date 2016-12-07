@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data
 {
@@ -13,9 +9,10 @@ namespace ItLabs.MyRecipes.Data
         {
 
         }
-        public int RecipeId { get; set; }
+        public int Id { get; set; }
+
         [Required]
-        public string RecipeName { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public bool Done { get; set; }
         public bool Favorites { get; set; }
