@@ -23,9 +23,9 @@ namespace ItLabs.MyRecipes.Data.Repository
 
         public void Remove(int Id)
         {
-            Recipe recipe = db.Recipes.Find(Id);
-            db.Recipes.Remove(recipe);
-            db.SaveChanges();
+            //Recipe recipe = db.Recipes.Find(Id);
+            //db.Recipes.Remove(recipe);
+            //db.SaveChanges();
 
         }
 
