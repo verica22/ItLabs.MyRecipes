@@ -8,7 +8,6 @@ namespace ItLabs.MyRecipes.Domain.Managers
     {
         public IRecipeRepository _recipeRepository { get; set; }
 
-
         public RecipeManager(IRecipeRepository recipeRepository)
         {
             _recipeRepository = recipeRepository;
@@ -16,18 +15,8 @@ namespace ItLabs.MyRecipes.Domain.Managers
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            //use automapper for this
-
-
-            //Mapper.CreateMap<IEnumerable<Recipe>, IEnumerable<Recipe>>();
-             //Mapper.CreateMap<Recipe, Recipe>();
-
-
-           Mapper.Initialize(cfg => cfg.CreateMap<Recipe, Recipe>());
-            return new List<Recipe>();// _recipeRepository.GetRecipes();
-
-            
-
+            var recipes = _recipeRepository.GetRecipes();
+            return Mapper.Map<IEnumerable<Recipe>>(recipes);
         }
     }
 }

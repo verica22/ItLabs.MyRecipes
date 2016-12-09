@@ -13,12 +13,11 @@ namespace ItLabs.MyRecipes.Data.Repository
         {
             var result = (from recipe in db.Recipes where recipe.Id == Id select recipe).FirstOrDefault();
             return result;
-
         }
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            return db.Recipes;
+            return db.Recipes.ToList();
         }
 
         public void Remove(int Id)
