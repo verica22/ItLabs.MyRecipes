@@ -1,4 +1,5 @@
 ﻿using ItLabs.MyRecipes.Domain;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ItLabs.MyRecipes.UI.Controllers
@@ -12,21 +13,20 @@ namespace ItLabs.MyRecipes.UI.Controllers
             _recipeManager = recipeManager;
         }
 
-        //RecipeRepository repository = new RecipeRepository();
         public ActionResult Index()
         {
             return View(_recipeManager.GetRecipes());
         }
-        //public ActionResult Done()
-        //{
-        //    var recipes = repository.GetRecipes().Where(r => r.Done);
-        //    return View(recipes);
-        //}
-        //public ActionResult Favorites()
-        //{
-        //    var recipes = repository.GetRecipes().Where(r => r.Favorites);
-        //    return View(recipes);
-        //}
+        public ActionResult Done()
+        {
+            var recipes = _recipeManager.GetRecipes().Where(r => r.Done);
+            return View(recipes);
+        }
+        public ActionResult Favorites()
+        {
+            var recipes = _recipeManager.GetRecipes().Where(r => r.Favorites);
+            return View(recipes);
+        }
         ////GET: Detail
         //public ActionResult Details(int? id)
         //{

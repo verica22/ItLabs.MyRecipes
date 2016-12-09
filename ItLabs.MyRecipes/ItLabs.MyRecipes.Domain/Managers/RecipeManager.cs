@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ItLabs.MyRecipes.Data.Repository;
+using AutoMapper;
 
 namespace ItLabs.MyRecipes.Domain.Managers
 {
@@ -16,7 +17,17 @@ namespace ItLabs.MyRecipes.Domain.Managers
         public IEnumerable<Recipe> GetRecipes()
         {
             //use automapper for this
+
+
+            //Mapper.CreateMap<IEnumerable<Recipe>, IEnumerable<Recipe>>();
+             //Mapper.CreateMap<Recipe, Recipe>();
+
+
+           Mapper.Initialize(cfg => cfg.CreateMap<Recipe, Recipe>());
             return new List<Recipe>();// _recipeRepository.GetRecipes();
+
+            
+
         }
     }
 }
