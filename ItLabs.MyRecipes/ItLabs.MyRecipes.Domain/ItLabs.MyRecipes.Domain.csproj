@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyInjection\AutofacDependencyResolver2.cs" />
     <Compile Include="DependencyInjection\DependencyClass.cs" />
     <Compile Include="DependencyInjection\IoCConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

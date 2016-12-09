@@ -22,22 +22,6 @@ namespace ItLabs.MyRecipes.Domain.DependencyInjection
             container.Resolve<IRecipeRepository>();
             //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-
-            // Register MVC-related dependencies
-            //    var builder = new ContainerBuilder();
-            //    builder.RecipeRepository(typeof(IRecipeRepository).Assembly);
-            //    builder.RegisterModelBinders(typeof(IRecipeRepository).Assembly);
-            //    builder.RegisterModule<AutofacWebTypesModule>();
-
-            //    // Register e-mail service
-            //    builder.RegisterType<EmailSenderToDebug>().As<IEmailSender>().InstancePerHttpRequest();
-
-            //    builder.RegisterModelBinderProvider();
-
-            //    // Set the MVC dependency resolver to use Autofac
-            //    var container = builder.Build();
-            //    DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            //}
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ItLabs.MyRecipes.Domain.DependencyInjection
             builder.RegisterModule<AutofacWebTypesModule>();
 
             // OPTIONAL: Enable property injection in view pages.
-            builder.RegisterSource(new ViewRegistrationSource());
+            //builder.RegisterSource(new ViewRegistrationSource());
 
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
