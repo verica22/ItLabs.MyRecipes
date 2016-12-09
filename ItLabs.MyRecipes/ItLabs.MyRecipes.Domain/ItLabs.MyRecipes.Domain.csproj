@@ -76,9 +76,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DependencyInjection\AutofacDependencyResolver2.cs" />
-    <Compile Include="DependencyInjection\DependencyClass.cs" />
+    <Compile Include="Contracts\Ingredient.cs" />
+    <Compile Include="Contracts\Recipe.cs" />
     <Compile Include="DependencyInjection\IoCConfig.cs" />
+    <Compile Include="IRecipeManager.cs" />
+    <Compile Include="Managers\RecipeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

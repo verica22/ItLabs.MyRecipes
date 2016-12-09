@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using ItLabs.MyRecipes.Domain;
 using System.Web.Mvc;
 
 namespace ItLabs.MyRecipes.UI.Controllers
 {
     public class HomeController : Controller
     {
-        //public IRecipeRepository _recipe { get; set; }
+        public IRecipeManager _recipeManager { get; set; }
 
-        //public HomeController(IRecipeRepository rec)
-        //{
-        //    this._recipe = rec;
-        //}
+        public HomeController(IRecipeManager recipeManager)
+        {
+            _recipeManager = recipeManager;
+        }
 
         //RecipeRepository repository = new RecipeRepository();
-        //public ActionResult Index()
-        //{
-        //    return View(repository.GetRecipes());
-        //}
+        public ActionResult Index()
+        {
+            return View(_recipeManager.GetRecipes());
+        }
         //public ActionResult Done()
         //{
         //    var recipes = repository.GetRecipes().Where(r => r.Done);
