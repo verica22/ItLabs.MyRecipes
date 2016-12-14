@@ -26,6 +26,12 @@ namespace ItLabs.MyRecipes.UI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
+                   "~/Scripts/MyScripts/AutoCompleteScript.js",
+                   "~/Scripts/MyScripts/SaveScript.js",
+                   "~/Scripts/MyScripts/GetDetails.js"));
         }
     }
 }

@@ -3,40 +3,100 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Photos/ImageRecipe.png" alt="Image">
+                <div class="carousel-caption">
+
+                    <p>Recipes</p>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="item">
+                <img src="~/Photos/ImageIngredients.png" alt="Image">
+                <div class="carousel-caption">
+
+                    <p>Ingredients</p>
+                </div>
             </div>
         </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div id="Navigation">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="list-group-item">@Html.ActionLink("Add New Recipe", "Create")</li>
+            <li role="presentation" class="list-group-item">@Html.ActionLink("Show All Recipes", "Index")</li>
+            <li role="presentation" class="list-group-item">@Html.ActionLink("Show Done Recipes", "Done")</li>
+            <li role="presentation" class="list-group-item">@Html.ActionLink("Show Favorites Recipes", "Favorites")</li>
+        </ul>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <h4><b>My Recipes</b></h4>
+                        <p>11th October St.<br>1000 Skopje, Republic of Macedonia</p>
+                        <p>
+                            <spam class="glyphicon glyphicon-earphone small"></spam> +389 2 311 1033
+                            <br><spam class="glyphicon glyphicon-envelope small"></spam><a href="#"> sample@it-labs.com</a>
+                        </p>
+                        <ul class="list-inline large" style="padding: 1em;">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
         </footer>
+        <section>
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px; ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11861.717309102833!2d21.4349918!3d41.9910608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e92311f15d3b349!2sIT+Labs+DOO+Skopje!5e0!3m2!1sen!2s!4v1481620335638" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <p>Copyright &copy Verica Umlenska 2016</p>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/myscripts")
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>

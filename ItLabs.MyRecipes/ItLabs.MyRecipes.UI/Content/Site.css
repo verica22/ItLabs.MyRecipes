@@ -22,3 +22,37 @@ select,
 textarea {
     max-width: 280px;
 }
+#Navigation {
+      margin-left: 70px;
+      font-family:"Comic Sans MS";
+      color:#A52A2A;
+      border-collapse: collapse;
+      font-size: 18px;
+      border-color:#A52A2A;
+      
+}
+h3{
+      font-family:"Comic Sans MS";
+      color:#A52A2A;
+      font-size: 30px;
+  }
+th{
+    color:#A52A2A;
+   
+}
+#checkBox {
+    width:30px;
+}
+#name{
+     width:20%;
+}
+.table {
+     /*width:40%;*/
+}
+dl{
+    /*width:40%;*/
+}
+#detailsTitle{
+     margin-left:180px;
+      color:#A52A2A;
+}

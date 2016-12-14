@@ -1,0 +1,71 @@
+﻿@model ItLabs.MyRecipes.Domain.Recipe
+
+@{ Layout = null; }
+
+<div>
+    <h4 id="detailsTitle">Details for @Html.DisplayFor(model => model.Name) </h4>
+   
+    <dl class="dl-horizontal">
+        <dt>
+           Recipe Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Done Recipe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Done)
+        </dd>
+
+        <dt>
+           Favorite Recipe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Favorites)
+        </dd>
+        <dt>
+            Ingredients
+        </dt>
+
+        <dd>
+            @*@if (Model.Ingredients.Any())
+                {
+                    foreach (var item in Model.Ingredients)
+                    {
+                     <span>@item.Name - </span>
+                     <span>@item.Measurement </span>
+                     }
+                }*@
+            
+                @*@if (Model.RecipeIngredients.Any( ))
+            {
+                foreach (var item in Model.RecipeIngredients)
+                {
+                    <span>@item.Ingredient.IngredientsName - </span>
+                    <span>@item.Quantity </span>
+                    <span>@item.Ingredient.Measurement</span>
+                    <br />
+                }
+            }*@
+
+        </dd>
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

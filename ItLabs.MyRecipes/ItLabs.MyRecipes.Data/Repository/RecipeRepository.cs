@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ItLabs.MyRecipes.Data.Repository
 {
-   public class RecipeRepository : IRecipeRepository
+    public class RecipeRepository : IRecipeRepository
     {
         RecipeDBContext db = new RecipeDBContext();
         public Recipe FindById(int Id)
@@ -40,5 +37,13 @@ namespace ItLabs.MyRecipes.Data.Repository
             db.SaveChanges();
 
         }
+        //public JsonResult GetIngredients(string term)
+        //{
+          
+        //    List<string> ingredients;
+        //    ingredients = db.Ingredients.Where(x => x.Name.StartsWith(term))
+        //        .Select(e => e.Name).Distinct().ToList();
+        //    return Json(ingredients, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

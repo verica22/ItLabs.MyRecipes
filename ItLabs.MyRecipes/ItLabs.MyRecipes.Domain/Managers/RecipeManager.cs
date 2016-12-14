@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ItLabs.MyRecipes.Data.Repository;
 using AutoMapper;
+using System;
 
 namespace ItLabs.MyRecipes.Domain.Managers
 {
@@ -18,5 +19,25 @@ namespace ItLabs.MyRecipes.Domain.Managers
             var recipes = _recipeRepository.GetRecipes();
             return Mapper.Map<IEnumerable<Recipe>>(recipes);
         }
+
+        public void Save(Recipe recipe)
+        {
+           //_recipeRepository.Save(recipe);
+                   
+        }
+
+        public void Remove(int Id)
+        {
+            _recipeRepository.Remove(Id);
+        }
+
+        public Recipe FindById(int Id)
+        {
+            var result = _recipeRepository.FindById(Id);
+            return Mapper.Map<Recipe>(result);
+           
+        }
+
+
     }
 }

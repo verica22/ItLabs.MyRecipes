@@ -141,6 +141,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Photos\delete.png" />
+    <Content Include="Photos\DeleteIcon.png" />
+    <Content Include="Photos\ImageIngredients.png" />
+    <Content Include="Photos\ImageRecipe.png" />
+    <Content Include="Photos\left.png" />
+    <Content Include="Photos\leftIcon.png" />
+    <Content Include="Photos\leftt.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -152,6 +159,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyScripts\AutoCompleteScript.js" />
+    <Content Include="Scripts\MyScripts\GetDetails.js" />
+    <Content Include="Scripts\MyScripts\SaveScript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -171,6 +181,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Done.cshtml" />
     <Content Include="Views\Home\Favorites.cshtml" />
+    <Content Include="Views\Home\Remove.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

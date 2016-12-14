@@ -1,5 +1,7 @@
 ﻿using ItLabs.MyRecipes.Domain;
+using System;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace ItLabs.MyRecipes.UI.Controllers
@@ -28,39 +30,37 @@ namespace ItLabs.MyRecipes.UI.Controllers
             return View(recipes);
         }
         ////GET: Detail
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Recipe recipe = repository.FindById(Convert.ToInt32(id));
-        //    if (recipe == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(recipe);
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             Recipe recipe = _recipeManager.FindById(Convert.ToInt32(id));
+            if (recipe == null)
+            {
+                return HttpNotFound();
+            }
+            return View(recipe);
+         }
 
-        //}
         //GET: Create
-        //[HttpGet]
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
         ////POST: Create
-        //[HttpPost]
-        //public ActionResult Create(Recipe recipe)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Recipes.Add(recipe);
-
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(recipe);
-        //}
+        [HttpPost]
+        public ActionResult Create(Recipe recipe)
+        {
+            if (ModelState.IsValid)
+            {
+                _recipeManager.Save(recipe);
+                 return RedirectToAction("Index");
+            }
+            return View(recipe);
+        }
         ////GET: Edit
         //public ActionResult Edit(int? id)
         //{
@@ -92,28 +92,37 @@ namespace ItLabs.MyRecipes.UI.Controllers
 
         //}
 
-        //GET: Delete
-        //public ActionResult Delete(int? Id)
+        //GET: Remove
+        public ActionResult Remove(int? Id)
+        {
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Recipe recipe = _recipeManager.FindById(Convert.ToInt32(Id));
+            if (recipe == null)
+            {
+                return HttpNotFound();
+            }
+            return View(recipe);
+        }
+        ////POST: Remove
+        [HttpPost, ActionName("Remove")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int Id)
+        {
+            //Recipe recipe = FindById(Convert.ToInt32(Id));
+            _recipeManager.Remove(Id);
+            return RedirectToAction("Index");
+        }
+
+        //public JsonResult GetIngredients(string term)
         //{
-        //    if (Id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Recipe recipe = repository.FindById(Convert.ToInt32(Id));
-        //    if (recipe == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(recipe);
-        //}
-        ////POST: Delete
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int Id)
-        //{
-        //    //Recipe recipe = FindById(Convert.ToInt32(Id));
-        //    repository.Remove(Id);
-        //    return RedirectToAction("Index");
+        //    RecipesEntities2 db = new RecipesEntities2();
+        //    List<string> ingredients;
+        //    ingredients = db.Ingredients.Where(x => x.IngredientsName.StartsWith(term))
+        //        .Select(e => e.IngredientsName).Distinct().ToList();
+        //    return Json(ingredients, JsonRequestBehavior.AllowGet);
         //}
     }
 }
