@@ -24,20 +24,35 @@ namespace ItLabs.MyRecipes.Data.Repository
             db.SaveChanges();
         }
 
-      
+
+        //public void Save(Recipe recipe)
+        //{
+        //    Recipe reci = new Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
+
+        //    foreach (var i in recipe.RecipeIngredients)
+        //    {
+        //        recipe.RecipeIngredients.Add(i);
+        //    }
+
+        //    db.Recipes.Add(reci);
+        //    db.SaveChanges();
+
+        //}
+
         public void Save(Recipe recipe)
         {
-                Recipe reci = new Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
-                foreach (var i in recipe.RecipeIngredients)
-                {
-                    recipe.RecipeIngredients.Add(i);
-                }
-                db.Recipes.Add(reci);
-                db.SaveChanges();
-               
-         }
-
+            if (recipe.Id == 0)
+            {
+                db.Recipes.Add(recipe);
+            }
+            else
+            {
+                db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
+            }
+            db.SaveChanges();
         }
+
+    }
 
 
     //public void Save(Recipe recipe)

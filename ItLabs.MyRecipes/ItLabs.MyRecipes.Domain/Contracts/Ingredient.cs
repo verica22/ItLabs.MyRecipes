@@ -1,5 +1,4 @@
-﻿using ItLabs.MyRecipes.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ItLabs.MyRecipes.Domain
 {

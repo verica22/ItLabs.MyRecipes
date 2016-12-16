@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ItLabs.MyRecipes.Domain.Contracts
+﻿namespace ItLabs.MyRecipes.Domain
 {
-    class RecipeIngredients
+    public class RecipeIngredients
     {
-       
         public int RecipeId { get; set; }
        
         public int IngredientsId { get; set; }
 
-        public virtual Recipe Recipe { get; set; }
-        public virtual Ingredient Ingredient { get; set; }
-
+        public string RecipeName { get; set; }
+        public string IngredientName { get; set; }
+        public string IngredientMeasurement { get; set; }
 
         public int Quantity { get; set; }
     }

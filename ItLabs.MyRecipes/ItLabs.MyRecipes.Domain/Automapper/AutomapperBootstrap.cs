@@ -9,9 +9,8 @@ namespace ItLabs.MyRecipes.Domain.Automapper
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<MyRecipesProfile>();
-                cfg.AddProfile<SaveRecipes>();
-                
-             });
+
+            });
         }
     }
 }
