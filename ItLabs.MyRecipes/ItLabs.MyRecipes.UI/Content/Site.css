@@ -56,3 +56,9 @@ dl{
      margin-left:180px;
       color:#A52A2A;
 }
+
+   hr.vertical
+{
+   width: 0px;
+   height: 100%; 
+} 

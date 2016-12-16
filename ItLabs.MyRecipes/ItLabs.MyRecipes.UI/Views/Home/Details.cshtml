@@ -42,25 +42,20 @@
         </dt>
 
         <dd>
-            @*@if (Model.Ingredients.Any())
-                {
-                    foreach (var item in Model.Ingredients)
-                    {
-                     <span>@item.Name - </span>
-                     <span>@item.Measurement </span>
-                     }
-                }*@
-            
-                @*@if (Model.RecipeIngredients.Any( ))
+            @if (Model.RecipeIngredients != null)
             {
-                foreach (var item in Model.RecipeIngredients)
+                if (Model.RecipeIngredients.Any())
                 {
-                    <span>@item.Ingredient.IngredientsName - </span>
-                    <span>@item.Quantity </span>
-                    <span>@item.Ingredient.Measurement</span>
-                    <br />
+                    foreach (var item in Model.RecipeIngredients)
+                    {
+                        <span>@item.Ingredient.Name - </span>
+                        <span>@item.Quantity </span>
+                        <span>@item.Ingredient.Measurement</span>
+                        <br />
+                    }
                 }
-            }*@
+            }
+                
 
         </dd>
     </dl>

@@ -9,7 +9,7 @@ namespace ItLabs.MyRecipes.Domain
         void Remove(int Id);
         Recipe FindById(int Id);
 
-    }
+        }
     public abstract class EntityBase
     {
         public int Id { get; protected set; }

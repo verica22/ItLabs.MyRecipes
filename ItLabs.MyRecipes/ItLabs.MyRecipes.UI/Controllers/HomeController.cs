@@ -116,12 +116,32 @@ namespace ItLabs.MyRecipes.UI.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public JsonResult Save(Recipe recipe)
+        {
+            bool status = false;
+            //if (ModelState.IsValid)
+            var isValidModel = TryUpdateModel(recipe);
+            if (isValidModel)
+            {
+                _recipeManager.Save(recipe);
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
+        }
+
+
         //public JsonResult GetIngredients(string term)
         //{
-        //    RecipesEntities2 db = new RecipesEntities2();
-        //    List<string> ingredients;
-        //    ingredients = db.Ingredients.Where(x => x.IngredientsName.StartsWith(term))
-        //        .Select(e => e.IngredientsName).Distinct().ToList();
+        //    _recipeManager.GetIngredients(Ingredient ingredient);
+
+        //    //List<string> ingredients;
+        //    //ingredients = db.Ingredients.Where(x => x.Name.StartsWith(term))
+        //    //    .Select(e => e.Name).Distinct().ToList();
+
         //    return Json(ingredients, JsonRequestBehavior.AllowGet);
         //}
     }

@@ -83,8 +83,10 @@
   <ItemGroup>
     <Compile Include="Automapper\AutomapperBootstrap.cs" />
     <Compile Include="Automapper\MyRecipesProfile.cs" />
+    <Compile Include="Automapper\SaveRecipes.cs" />
     <Compile Include="Contracts\Ingredient.cs" />
     <Compile Include="Contracts\Recipe.cs" />
+    <Compile Include="Contracts\RecipeIngredients.cs" />
     <Compile Include="DependencyInjection\IoCConfig.cs" />
     <Compile Include="IRecipeManager.cs" />
     <Compile Include="Managers\RecipeManager.cs" />

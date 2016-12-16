@@ -22,8 +22,10 @@ namespace ItLabs.MyRecipes.Domain.Managers
 
         public void Save(Recipe recipe)
         {
-           //_recipeRepository.Save(recipe);
-                   
+            //var result = Mapper.Map<Recipe>(recipe);
+            //_recipeRepository.Save(Mapper.Map<Recipe>(recipe));
+
+          // _recipeRepository.Save(recipe);
         }
 
         public void Remove(int Id)
@@ -37,7 +39,10 @@ namespace ItLabs.MyRecipes.Domain.Managers
             return Mapper.Map<Recipe>(result);
            
         }
-
+        //public  GetIngredients(Ingredient ingredient)
+        //{
+        //    _recipeRepository.GetIngredients(ingredients);
+        //}
 
     }
 }

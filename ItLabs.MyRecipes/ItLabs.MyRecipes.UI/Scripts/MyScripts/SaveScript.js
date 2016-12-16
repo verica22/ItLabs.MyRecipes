@@ -1,4 +1,4 @@
-﻿debugger;
+﻿    debugger;
     var orderItems = [];
     //Add button click function
     $('#add').click(function () {
@@ -37,47 +37,48 @@
         GeneratedItemsTable();
 
     });
-//Save button click function
+    //Save button click function
     debugger;
     $('#submit').click(function () {
         //validation of order
+        debugger;
         var isAllValid = true;
-        //if (orderItems.length == 0) {
-        //    $('#orderItems').html('<span style="color:red;">Please add order items</span>');
-        //    isAllValid = false;
-        //}
+        if (orderItems.length == 0) {
+            $('#orderItems').html('<span style="color:red;">Please add order items</span>');
+            isAllValid = false;
+        }
 
-        //if ($('#recipeName').val().trim() == '') {
-        //    $('#recipeName').siblings('span.error').css('visibility', 'visible');
-        //    isAllValid = false;
-        //}
-        //else {
-        //    $('#recipeName').siblings('span.error').css('visibility', 'hidden');
-        //}
-
-
+        if ($('#recipeName').val().trim() == '') {
+            $('#recipeName').siblings('span.error').css('visibility', 'visible');
+            isAllValid = false;
+        }
+        else {
+            $('#recipeName').siblings('span.error').css('visibility', 'hidden');
+        }
 
         //Save if valid
-        debugger;
         if (isAllValid) {
             debugger;
             var data = {
-                RecipeName: $('#Name').val().trim(),
-                Description: $('#Description').val().trim(),
-                Done: $('#Done').val().trim(),
-                Favorites: $('#Favourites').val().trim(),
-                Ingredient: orderItems
+                Name: $('#recipeName').val().trim(),
+                Description: $('#description').val().trim(),
+                Done: $('#doneRecipe').val().trim,
+               Favorites: $('#favouriteRecipe').val().trim(),
+                Ingredients: orderItems
             }
 
             $(this).val('Please wait...');
-
+            debugger;
             $.ajax({
-                url: '/Recipes/SaveOrder',
+
+                url: '/Home/Save',
                 type: "POST",
                 data: JSON.stringify(data),
                 dataType: "JSON",
                 contentType: "application/json",
+                
                 success: function (d) {
+                    debugger;
                     //check is successfully save to database
                     if (d.status == true) {
                         //will send status from server side
@@ -85,6 +86,7 @@
                         //clear form
                         orderItems = [];
                         $('#recipeName').val('');
+                        $('#description').val('');
                         $('#orderItems').empty();
                     }
                     else {

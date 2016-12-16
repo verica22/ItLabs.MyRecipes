@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ItLabs.MyRecipes.Data;
+using System.Collections.Generic;
 
 namespace ItLabs.MyRecipes.Domain
 {
@@ -11,6 +12,7 @@ namespace ItLabs.MyRecipes.Domain
         public bool Done { get; set; }
         public bool Favorites { get; set; }
 
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        //public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<RecipeIngredients> RecipeIngredients { get; set; }
     }
 }

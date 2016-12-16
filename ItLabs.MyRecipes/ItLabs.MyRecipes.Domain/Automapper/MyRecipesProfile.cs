@@ -7,9 +7,11 @@ namespace ItLabs.MyRecipes.Domain.Automapper
         public MyRecipesProfile()
         {
             CreateMap<Data.Recipe, Recipe>()
-                  .ForMember(d => d.Ingredients, o => o.Ignore());
+                  .ForMember(d => d.RecipeIngredients, o => o.Ignore());
 
             CreateMap<Data.Ingredient, Ingredient>();
+
+
         }
     }
 }
