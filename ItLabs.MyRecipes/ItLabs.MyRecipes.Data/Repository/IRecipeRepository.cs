@@ -12,6 +12,6 @@ namespace ItLabs.MyRecipes.Data.Repository
         void Remove(int Id);
         IEnumerable<Recipe> GetRecipes();
         Recipe FindById(int Id);
-        
-      }
+        //IEnumerable<Recipe> Search(string Name);
+    }
 }

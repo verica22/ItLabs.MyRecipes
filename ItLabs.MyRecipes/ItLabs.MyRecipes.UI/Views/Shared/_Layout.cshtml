@@ -40,15 +40,50 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <hr />
+    <div class="container text-center" >
+      
 
-    <div id="Navigation">
-        <ul class="nav nav-pills">
-            <li role="presentation" class="list-group-item">@Html.ActionLink("Add New Recipe", "Create")</li>
-            <li role="presentation" class="list-group-item">@Html.ActionLink("Show All Recipes", "Index")</li>
-            <li role="presentation" class="list-group-item">@Html.ActionLink("Show Done Recipes", "Done")</li>
-            <li role="presentation" class="list-group-item">@Html.ActionLink("Show Favorites Recipes", "Favorites")</li>
-        </ul>
-    </div>
+        <div class="col-sm-1">
+
+           @* <label class="checkbox-inline"><input type="checkbox" value="">@Html.ActionLink("Done", "Done")</label>*@
+            <label class="checkbox-inline"><input type="checkbox" value="Done">Done</label>
+
+        </div>
+        <div class="col-sm-1">
+
+            @*<label class="checkbox-inline"><input type="checkbox" value="">@Html.ActionLink("Favorites", "Favorites")</label>*@
+            <label class="checkbox-inline"><input type="checkbox" value="Favorites">Favorites</label>
+
+        </div>
+        <div class="col-sm-3">
+
+
+            @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+            {
+                <form>
+                    <div class="input-group input-group-sm">
+                        @*<input value="Name" type="text" class="form-control" placeholder="Name">*@
+                        @Html.TextBox("Name")
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+            }
+        </div>
+
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-default">@Html.ActionLink("Add New Recipe", "Create")</button>
+
+        </div>
+        <div class="col-sm-3">
+        </div>
+        </div>
+ 
+
+
     <div class="container body-content">
         @RenderBody()
         <footer>
@@ -77,15 +112,7 @@
                 </div>
             </div>
         </footer>
-        <section>
-            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px; ">
-                <div class="row">
-                    <div class="col-md-12">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11861.717309102833!2d21.4349918!3d41.9910608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9e92311f15d3b349!2sIT+Labs+DOO+Skopje!5e0!3m2!1sen!2s!4v1481620335638" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
+      
         <hr>
         <div class="col-md-6 col-md-offset-3 text-center">
             <p>Copyright &copy Verica Umlenska 2016</p>

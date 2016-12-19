@@ -3,11 +3,18 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using PagedList;
+
+
 
 namespace ItLabs.MyRecipes.UI.Controllers
 {
+   
     public class HomeController : Controller
     {
+
+        public const int pageSize = 5;
+        //public const int pageNumber = (page ?? 1);
         public IRecipeManager _recipeManager { get; set; }
 
         public HomeController(IRecipeManager recipeManager)
@@ -15,18 +22,42 @@ namespace ItLabs.MyRecipes.UI.Controllers
             _recipeManager = recipeManager;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(_recipeManager.GetRecipes());
+           
+            int pageNumber = (page ?? 1);
+
+            return View(_recipeManager.GetRecipes().ToPagedList(pageNumber,pageSize));
         }
-        public ActionResult Done()
+        [HttpPost]
+        public ActionResult Search(string Name,bool isDone,bool IsFavourite)
         {
-            var recipes = _recipeManager.GetRecipes().Where(r => r.Done);
+
+            //int pageNumber = (page ?? 1);
+            //var recipes = _recipeManager.GetRecipes().Where(r => r.Name.Contains(Name)).ToList().ToPagedList(pageNumber, pageSize);
+            //return View(recipes);
+            var recipes = _recipeManager.GetRecipes().Where(r =>
+                    r.Name.Contains(Name.ToLower()) ||
+                    r.Done ||
+                    r.Favorites)
+                    .ToList();
+
+            return View(recipes);
+
+
+        }
+        public ActionResult Done(int? page)
+        {
+           
+            int pageNumber = (page ?? 1);
+            var recipes = _recipeManager.GetRecipes().Where(r => r.Done).ToPagedList(pageNumber, pageSize);
             return View(recipes);
         }
-        public ActionResult Favorites()
+        public ActionResult Favorites(int? page)
         {
-            var recipes = _recipeManager.GetRecipes().Where(r => r.Favorites);
+           
+            int pageNumber = (page ?? 1);
+            var recipes = _recipeManager.GetRecipes().Where(r => r.Favorites).ToPagedList(pageNumber, pageSize);
             return View(recipes);
         }
         ////GET: Detail

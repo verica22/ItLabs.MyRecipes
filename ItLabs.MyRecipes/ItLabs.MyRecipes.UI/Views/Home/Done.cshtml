@@ -1,52 +1,76 @@
-﻿@model IEnumerable<ItLabs.MyRecipes.Domain.Recipe>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ItLabs.MyRecipes.Domain.Recipe>
 
 @{
     ViewBag.Title = "Done";
 }
 
-<h3>Done Recipes</h3>
+@*<h3>Done Recipes</h3>*@
 
 
-<table class="table">
-    <tr>
-        <th id="name">
-            Recipe Name
 
-        </th>
+<div class="container text-center">
+    <hr />
 
-        <th id="checkBox">
-            Done Recipes
-
-        </th>
-        <th id="checkBox">
-            Favorites Recipes
-
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <a data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id=item.Id})">@Html.DisplayFor(modelItem => item.Name)</a>
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Done)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Favorites)
-            </td>
-            <td>
-                <a href='@Url.Action("Remove", new { id=item.Id })'>
-                    <img src='@Url.Content("~/Photos/IconDelete.png")' />
-                </a>
-            </td>
-            <td id="ShowDetails-@item.Id"></td>
-        </tr>
-    }
+    <div class="row">
+        <div id="hederNav" class="container text-left col-sm-6">
 
 
-</table>
+            <div class="col-sm-6">
 
+                <p><b>Recipe Name</b></p>
+            </div>
+            <div class="col-sm-2">
+
+                <p><b>Done Recipes</b></p>
+            </div>
+            <div class="col-sm-2">
+
+                <p><b>Favorites Recipes</b></p>
+            </div>
+            <div class="col-sm-2">
+
+                @*<p>Delete</p>*@
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="container text-left">
+                    <div class="col-sm-6">
+
+                        <a data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id=item.Id})">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.DisplayFor(modelItem => item.Done)
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.DisplayFor(modelItem => item.Favorites)
+                    </div>
+                    <div class="col-sm-2">
+                        <a href='@Url.Action("Remove", new { id = item.Id })'>
+                            <img src='@Url.Content("~/Photos/IconDelete.png")' />
+                        </a>
+                    </div>
+
+                </div>
+                <hr />
+            }
+
+        </div>
+        <br />
+        <br />
+
+        <div class="col-sm-6 container text-left" id="ShowDetails-">
+
+        </div>
+
+
+    </div>
+</div><br>
+<div class="pager">
+    @* Page @Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

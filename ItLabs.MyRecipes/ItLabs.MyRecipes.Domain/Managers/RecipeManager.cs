@@ -17,7 +17,6 @@ namespace ItLabs.MyRecipes.Domain.Managers
         {
             var dbRecipes = _recipeRepository.GetRecipes();
             var recipes = Mapper.Map<IEnumerable<Recipe>>(dbRecipes);
-
             return recipes;
         }
 
@@ -39,6 +38,13 @@ namespace ItLabs.MyRecipes.Domain.Managers
             return Mapper.Map<Recipe>(result);
            
         }
+        //public Recipe Search(string Name)
+        //{
+        //    var result = _recipeRepository.Search(Name);
+        //    return Mapper.Map<Recipe>(result);
+            
+
+        //}
         //public  GetIngredients(Ingredient ingredient)
         //{
         //    _recipeRepository.GetIngredients(ingredients);

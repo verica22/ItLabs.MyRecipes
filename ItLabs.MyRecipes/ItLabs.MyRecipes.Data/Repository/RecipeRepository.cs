@@ -11,7 +11,14 @@ namespace ItLabs.MyRecipes.Data.Repository
             var result = (from recipe in db.Recipes where recipe.Id == Id select recipe).FirstOrDefault();
             return result;
         }
-
+        //public IEnumerable<Recipe> Search(string Name)
+        //{
+        //    //var result = (from recipe in db.Recipes where recipe.Name == Name select recipe).FirstOrDefault();
+        //    //return result;
+        //    var result = from c in db.Recipes select c;
+        //    result=result.Where(s => s.Name.Contains(Name));
+        //    return result;
+        //}
         public IEnumerable<Recipe> GetRecipes()
         {
             return db.Recipes.ToList();
