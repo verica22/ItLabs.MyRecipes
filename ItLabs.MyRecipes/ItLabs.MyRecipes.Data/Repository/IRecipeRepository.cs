@@ -10,8 +10,9 @@ namespace ItLabs.MyRecipes.Data.Repository
     {
         void Save(Recipe recipe);
         void Remove(int Id);
+        void Edit(Recipe recipe);
         IEnumerable<Recipe> GetRecipes();
         Recipe FindById(int Id);
-        //IEnumerable<Recipe> Search(string Name);
+        
     }
 }

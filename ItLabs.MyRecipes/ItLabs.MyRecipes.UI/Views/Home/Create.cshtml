@@ -4,85 +4,73 @@
     ViewBag.Title = "Create";
 }
 
-<h3>Create New Recipe</h3>
+<h4><b>Create New Recipe</b></h4>
+<hr />
 
-<div class="form-horizontal" style="max-width:640px">
-    <div class="master">
-
-        <table>
-            <tr>
-                <td><b>Recipe Name</b></td>
-                <td>
-                    <input type="text" id="recipeName" />
-                    <span class="error">Recipe name required</span>
-                </td>
-
-            </tr>
-
-            <tr>
-                <td><b>Description</b></td>
-                <td colspan="3">
-                    <textarea id="description" style="width:100%"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td><b>Done Recipe</b></td>
-                <td>
-                    <input type="checkbox" id="doneRecipe" />
-                </td>
-            </tr>
-            <tr>
-                <td><b>Favourite Recipe</b></td>
-                <td>
-                    <input type="checkbox" id="favouriteRecipe" />
-                </td>
-
-            </tr>
-        </table>
+<div class="container col-sm-6">
+    <div class="container">
+        <form>
+            <div class="form-group col-sm-12">
+                <label for="name">Recipe Name:</label>
+                <input type="text" class="form-control" id="recipeName">
+                <span class="error">Recipe name required</span>
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="comment">Description:</label>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="" id="doneRecipe">Done</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="" id="favouriteRecipe">Favourite</label>
+            </div>
+        </form>
     </div>
-    <div class="details">
-        <h3>Ingredients</h3>
-
-        <table width="100%">
-            <tr>
-                <td><b>Ingredints Name</b></td>
-                <td><b>Quantity</b></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    @*@using (Html.BeginForm())
-                        {
-                            @Html.TextBox("searchTerm", null, new { id = "ingredientsName" })
-                        }*@
-
-                    <input type="text" id="ingredientsName" />
-                    <span class="error">Name required</span>
-                </td>
-                <td>
-                    <input type="text" id="quantity" />
-                    <span class="error">Valid quantity required</span>
-                </td>
-                <td>
-                    <input type="button" id="add" value="add" />
-                </td>
-            </tr>
-        </table>
-
-
-
-        <div id="orderItems" class="tablecontainer">
-
-        </div>
-        <div style="padding:10px 0px; text-align:right">
-            <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+    <h4><b>Ingredients</b></h4>
+    <hr />
+    <div class="container col-sm-5">
+        <div class="form-group">
+            <label for="Iname">Name:</label>
+            <input type="text" class="form-control" id="ingredientsName">
+            <span class="error">Name required</span>
         </div>
     </div>
+    <div class="container col-sm-5">
+        <div class="container">
+            <label for="quantity">Quantity:</label>
+            <input type="text" class="form-control" id="quantity">
+            <span class="error">Valid quantity required</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+        <p>
+            @*<input type="button" id="add" value="Add" />*@
+            <input type="image" src="~/Photos/add2.png" title="add" alt="add" id="add" width="30" height="30">
+            <div title="Add"></div>
+</p>
+    </div>
+    <div class="col-sm-12 tablecontainer" id="orderItems">
+        <br>
+
+    </div>
+    <div class="container text-right col-sm-12">
+        
+       @* <input id="submit" type="button" value="Save"> <img src='@Url.Content("~/Photos/IconDelete.png")' />*@
+       
+        <input type="image" src="~/Photos/Save3.png" alt="Submit" id="submit" width="60" height="60">
+    </div>
+    <br />
+</div>
+<div class="container col-sm-6">
+
 </div>
 
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Back to List", "Index")*@
 </div>
 
 

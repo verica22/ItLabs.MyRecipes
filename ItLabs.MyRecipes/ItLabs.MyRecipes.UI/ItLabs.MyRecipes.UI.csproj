@@ -150,6 +150,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Photos\add.png" />
+    <Content Include="Photos\add2.png" />
     <Content Include="Photos\delete.png" />
     <Content Include="Photos\DeleteIcon.png" />
     <Content Include="Photos\ImageIngredients.png" />
@@ -157,6 +159,9 @@
     <Content Include="Photos\left.png" />
     <Content Include="Photos\leftIcon.png" />
     <Content Include="Photos\leftt.png" />
+    <Content Include="Photos\Save.png" />
+    <Content Include="Photos\Save2.png" />
+    <Content Include="Photos\save3.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -194,6 +199,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

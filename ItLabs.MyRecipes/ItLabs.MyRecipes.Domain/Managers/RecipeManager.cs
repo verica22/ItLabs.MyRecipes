@@ -31,20 +31,20 @@ namespace ItLabs.MyRecipes.Domain.Managers
         {
             _recipeRepository.Remove(Id);
         }
-
+        public void Edit(Recipe recipe)
+        {
+            var dbRecipe = Mapper.Map<Data.Recipe>(recipe);
+            _recipeRepository.Edit(dbRecipe);
+        }
         public Recipe FindById(int Id)
         {
             var result = _recipeRepository.FindById(Id);
             return Mapper.Map<Recipe>(result);
            
         }
-        //public Recipe Search(string Name)
-        //{
-        //    var result = _recipeRepository.Search(Name);
-        //    return Mapper.Map<Recipe>(result);
-            
+       
 
-        //}
+       
         //public  GetIngredients(Ingredient ingredient)
         //{
         //    _recipeRepository.GetIngredients(ingredients);

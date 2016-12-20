@@ -8,8 +8,8 @@ namespace ItLabs.MyRecipes.Domain
         void Save(Recipe recipe);
         void Remove(int Id);
         Recipe FindById(int Id);
-        //Recipe Search(string Name);
-       
+        void Edit(Recipe recipe);
+
     }
     public abstract class EntityBase
     {

@@ -41,26 +41,22 @@
         </a>
     </div>
     <hr />
-    <div class="container text-center" >
-      
-
-        <div class="col-sm-1">
-
-           @* <label class="checkbox-inline"><input type="checkbox" value="">@Html.ActionLink("Done", "Done")</label>*@
-            <label class="checkbox-inline"><input type="checkbox" value="Done">Done</label>
-
-        </div>
-        <div class="col-sm-1">
-
-            @*<label class="checkbox-inline"><input type="checkbox" value="">@Html.ActionLink("Favorites", "Favorites")</label>*@
-            <label class="checkbox-inline"><input type="checkbox" value="Favorites">Favorites</label>
-
-        </div>
-        <div class="col-sm-3">
-
-
-            @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    <div class="container text-center">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
             {
+
+            <div class="col-sm-1">
+
+                @* <label class="checkbox-inline"><input type="checkbox" id="IsDone" value="Done">Done</label>*@
+                <label class="checkbox-inline"> @Html.CheckBox("IsDone", "Done")<text>Done</text></label>
+            </div>
+            <div class="col-sm-1">
+
+                @* <label class="checkbox-inline"><input type="radio" value="IsFavorites">Favorites</label>*@
+                <label class="checkbox-inline">@Html.CheckBox("IsFavourite", "Favorite") <text>Favorites</text></label>
+            </div>
+            <div class="col-sm-3">
+
                 <form>
                     <div class="input-group input-group-sm">
                         @*<input value="Name" type="text" class="form-control" placeholder="Name">*@
@@ -71,8 +67,8 @@
                     </div>
                 </form>
 
-            }
-        </div>
+            </div>
+        }
 
         <div class="col-sm-2">
             <button type="button" class="btn btn-default">@Html.ActionLink("Add New Recipe", "Create")</button>
@@ -80,8 +76,8 @@
         </div>
         <div class="col-sm-3">
         </div>
-        </div>
- 
+    </div>
+
 
 
     <div class="container body-content">
@@ -112,7 +108,7 @@
                 </div>
             </div>
         </footer>
-      
+
         <hr>
         <div class="col-md-6 col-md-offset-3 text-center">
             <p>Copyright &copy Verica Umlenska 2016</p>

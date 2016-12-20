@@ -44,7 +44,7 @@
         debugger;
         var isAllValid = true;
         if (orderItems.length == 0) {
-            $('#orderItems').html('<span style="color:red;">Please add order items</span>');
+            $('#orderItems').html('<span style="color:red;">Please add ingredients</span>');
             isAllValid = false;
         }
 
@@ -62,9 +62,9 @@
             var data = {
                 Name: $('#recipeName').val().trim(),
                 Description: $('#description').val().trim(),
-                Done: $('#doneRecipe').val().trim,
-               Favorites: $('#favouriteRecipe').val().trim(),
-                Ingredients: orderItems
+               // Done: $('#doneRecipe').val().trim,
+               //Favorites: $('#favouriteRecipe').val().trim(),
+               // Ingredients: orderItems
             }
 
             $(this).val('Please wait...');
