@@ -24,7 +24,7 @@
         //Add item to list if valid
         if (isValidItem) {
             orderItems.push({
-                IngredientsName: $('#ingredientsName').val().trim(),
+                IngredientName: $('#ingredientsName').val().trim(),
 
                 Quantity: parseInt($('#quantity').val().trim()),
             });
@@ -62,9 +62,9 @@
             var data = {
                 Name: $('#recipeName').val().trim(),
                 Description: $('#description').val().trim(),
-               // Done: $('#doneRecipe').val().trim,
-               //Favorites: $('#favouriteRecipe').val().trim(),
-               // Ingredients: orderItems
+                Done: $('#doneRecipe').is(":checked"),
+                Favorites: $('#favouriteRecipe').is(":checked"),
+                RecipeIngredients: orderItems
             }
 
             $(this).val('Please wait...');
