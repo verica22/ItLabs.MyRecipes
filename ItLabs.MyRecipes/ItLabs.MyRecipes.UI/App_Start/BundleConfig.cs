@@ -9,7 +9,8 @@ namespace ItLabs.MyRecipes.UI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,13 +26,15 @@ namespace ItLabs.MyRecipes.UI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/jquery-ui.theme.min.css"
+                      ));
 
 
             bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
-                   "~/Scripts/MyScripts/AutoCompleteScript.js",
-                   "~/Scripts/MyScripts/SaveScript.js",
-                   "~/Scripts/MyScripts/GetDetails.js"));
+                   "~/Scripts/MyScripts/RecipesSave.js",
+                   "~/Scripts/MyScripts/RecipesGetDetails.js",
+                   "~/Scripts/MyScripts/RecipesAutoComplete.js"));
         }
     }
 }

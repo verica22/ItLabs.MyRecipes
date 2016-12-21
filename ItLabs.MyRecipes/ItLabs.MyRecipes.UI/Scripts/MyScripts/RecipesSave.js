@@ -64,14 +64,14 @@
                 Description: $('#description').val().trim(),
                 Done: $('#doneRecipe').is(":checked"),
                 Favorites: $('#favouriteRecipe').is(":checked"),
-                RecipeIngredients: orderItems
+                //RecipeIngredients: orderItems
             }
 
             $(this).val('Please wait...');
             debugger;
             $.ajax({
 
-                url: '/Home/Save',
+                url: '/Recipes/Save',
                 type: "POST",
                 data: JSON.stringify(data),
                 dataType: "JSON",
@@ -111,7 +111,7 @@
             var $tbody = $('<tbody/>');
             $.each(orderItems, function (i, val) {
                 var $row = $('<tr/>');
-                $row.append($('<td/>').html(val.IngredientsName));
+                $row.append($('<td/>').html(val.IngredientName));
                 $row.append($('<td/>').html(val.Quantity));
                 var $remove = $('<a href="#">Remove</a>');
                 $remove.click(function (e) {

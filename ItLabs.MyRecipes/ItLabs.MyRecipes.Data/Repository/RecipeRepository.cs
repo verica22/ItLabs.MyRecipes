@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ItLabs.MyRecipes.Data.Repository
@@ -25,17 +26,43 @@ namespace ItLabs.MyRecipes.Data.Repository
         }
 
 
-        public void Save(Recipe recipe)
+        public void Save(Recipe recipe,string term)
         {
-            if (recipe.Id == 0)
+            var ingredientExists = db.Ingredients.Where(x => x.Name.Equals(term)).SingleOrDefault();
+
+            if (ingredientExists == null)
             {
-                db.Recipes.Add(recipe);
+                //db.Recipes.Add(new Ingredient);
+                //db.SaveChanges(); 
             }
             else
             {
-                db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
-            }
-            db.SaveChanges();
+
+                if (recipe.Id == 0)
+                {
+                    db.Recipes.Add(recipe);
+                }
+                else
+                {
+                    db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
+                }
+                db.SaveChanges();
+
+           }
+
+            //bool ingredientExists = db.Ingredients.Any(x => x.Name.Equals(term));
+            //if (ingredientExists)
+            //{
+            //    return -1;
+            //}
+            //else
+            //{
+            //    db.Ingredients.Add(ingredients);
+            //    db.SaveChanges();
+            //    return ingredients.Id;
+            //}
+
+           
         }
         public void Edit(Recipe recipe)
         {
@@ -43,7 +70,12 @@ namespace ItLabs.MyRecipes.Data.Repository
             db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            
+
+        }
+
+        public IEnumerable<Ingredient> GetIngredients()
+        {
+            return db.Ingredients.ToList();
         }
         //public GetIngredients(string term)
         //{
@@ -51,8 +83,8 @@ namespace ItLabs.MyRecipes.Data.Repository
         //    List<string> ingredients;
         //    ingredients = db.Ingredients.Where(x => x.Name.StartsWith(term))
         //        .Select(e => e.Name).Distinct().ToList();
-        //    //return (ingredients);
-        //    //return Json(ingredients, JsonRequestBehavior.AllowGet);
+
+        //    return ingredients;
         //}
 
     }

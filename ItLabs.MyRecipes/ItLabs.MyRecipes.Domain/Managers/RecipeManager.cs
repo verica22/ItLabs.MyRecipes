@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ItLabs.MyRecipes.Data.Repository;
 using AutoMapper;
+using System;
 
 namespace ItLabs.MyRecipes.Domain.Managers
 {
@@ -42,13 +43,14 @@ namespace ItLabs.MyRecipes.Domain.Managers
             return Mapper.Map<Recipe>(result);
            
         }
-       
 
-       
-        //public  GetIngredients(Ingredient ingredient)
-        //{
-        //    _recipeRepository.GetIngredients(ingredients);
-        //}
+        public IEnumerable<Ingredient> GetIngredients()
+        {
+            var dbIngredients = _recipeRepository.GetIngredients();
+            var ingredient = Mapper.Map<IEnumerable<Ingredient>>(dbIngredients);
+            return ingredient;
+        }
 
+        
     }
 }

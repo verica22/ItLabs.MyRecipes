@@ -4,20 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using PagedList;
-
-
+using System.Collections.Generic;
 
 namespace ItLabs.MyRecipes.UI.Controllers
 {
 
-    public class HomeController : Controller
+    public class RecipesController : Controller
     {
 
         public const int pageSize = 8;
-       
+
         public IRecipeManager _recipeManager { get; set; }
 
-        public HomeController(IRecipeManager recipeManager)
+        public RecipesController(IRecipeManager recipeManager)
         {
             _recipeManager = recipeManager;
         }
@@ -34,45 +33,45 @@ namespace ItLabs.MyRecipes.UI.Controllers
         {
 
             int pageNumber = (page ?? 1);
-            var recipes= (dynamic)null; 
+            var recipes = (dynamic)null;
 
             if (IsDone != false && IsFavourite != false)
             {
-                 recipes = _recipeManager.GetRecipes().Where(r =>
-                r.Done &&
-                r.Favorites &&
-                r.Name.Contains(Name))
-               .ToPagedList(pageNumber, pageSize);
-               
+                recipes = _recipeManager.GetRecipes().Where(r =>
+               r.Done &&
+               r.Favorites &&
+               r.Name.ToLower().Contains(Name))
+              .ToPagedList(pageNumber, pageSize);
+
             }
             else if (IsDone != false)
             {
                 recipes = _recipeManager.GetRecipes().Where(r =>
                 r.Done &&
-                r.Name.Contains(Name))
+                r.Name.ToLower().Contains(Name))
                 .ToPagedList(pageNumber, pageSize);
-              
+
             }
             else if (IsFavourite != false)
             {
-                 recipes = _recipeManager.GetRecipes().Where(r =>
-                r.Favorites &&
-                r.Name.Contains(Name))
-                .ToPagedList(pageNumber, pageSize);
-              
+                recipes = _recipeManager.GetRecipes().Where(r =>
+               r.Favorites &&
+               r.Name.ToLower().Contains(Name))
+               .ToPagedList(pageNumber, pageSize);
+
             }
             else
             {
-                 recipes = _recipeManager.GetRecipes().Where(r => 
-                 r.Name.Contains(Name))
-                 .ToList().ToPagedList(pageNumber, pageSize);
-                
+                recipes = _recipeManager.GetRecipes().Where(r =>
+                r.Name.ToLower().Contains(Name))
+                .ToList().ToPagedList(pageNumber, pageSize);
+
             }
             return View(recipes);
 
 
         }
-       
+
         ////GET: Detail
         public ActionResult Details(int? id)
         {
@@ -105,7 +104,7 @@ namespace ItLabs.MyRecipes.UI.Controllers
             }
             return View(recipe);
         }
-                //GET: Remove
+        //GET: Remove
         public ActionResult Remove(int? Id)
         {
             if (Id == null)
@@ -124,7 +123,7 @@ namespace ItLabs.MyRecipes.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int Id)
         {
-            //Recipe recipe = FindById(Convert.ToInt32(Id));
+
             _recipeManager.Remove(Id);
             return RedirectToAction("Index");
         }
@@ -176,15 +175,14 @@ namespace ItLabs.MyRecipes.UI.Controllers
 
         }
 
-        //public JsonResult GetIngredients(string term)
-        //{
-        //    _recipeManager.GetIngredients(Ingredient ingredient);
+        public JsonResult GetIngredients(string term)
+        {
 
-        //    List<string> ingredients;
-        //    ingredients = db.Ingredients.Where(x => x.Name.StartsWith(term))
-        //        .Select(e => e.Name).Distinct().ToList();
+            List<string> ingredients;
+            ingredients = _recipeManager.GetIngredients().Where(x => x.Name.ToLower().StartsWith(term))
+                .Select(e => e.Name).Distinct().ToList();
 
-        //    return Json(ingredients, JsonRequestBehavior.AllowGet);
-        //}
+            return Json(ingredients, JsonRequestBehavior.AllowGet);
+        }
     }
 }

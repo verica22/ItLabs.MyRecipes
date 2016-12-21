@@ -10,6 +10,7 @@ namespace ItLabs.MyRecipes.Domain
         Recipe FindById(int Id);
         void Edit(Recipe recipe);
 
+        IEnumerable<Ingredient> GetIngredients();
     }
     public abstract class EntityBase
     {

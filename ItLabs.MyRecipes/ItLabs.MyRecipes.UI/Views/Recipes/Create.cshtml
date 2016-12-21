@@ -1,0 +1,102 @@
+﻿@model ItLabs.MyRecipes.Domain.Recipe
+@using ItLabs.MyRecipes.UI.Enums
+@{
+    ViewBag.Title = "Create";
+}
+@*<script type="text/javascript" src="{$content_dir}js/jquery/jquery.autocomplete.js"></script>*@
+
+
+<h4><b>Create New Recipe</b></h4>
+<hr />
+
+<div class="container col-sm-6">
+    <div class="container">
+        <form>
+            <div class="form-group col-sm-12">
+                <label for="name">Recipe Name:</label>
+                <input type="text" class="form-control" id="recipeName">
+                <span class="error">Recipe name required</span>
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="comment">Description:</label>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="" id="doneRecipe">Done</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="" id="favouriteRecipe">Favourite</label>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <h4><b>Ingredients</b></h4>
+        <hr />
+        <div class="container col-sm-5">
+            <div class="form-group">
+                @using (Html.BeginForm())
+                {
+                    <label for="Iname">Name:</label>
+                    @Html.TextBox("term", null, new { id = "ingredientsName" })
+                    <span class="error">Name required</span>
+                }
+
+            </div>
+        </div>
+        <div class="container col-sm-3">
+            <div class="container">
+                <label for="quantity">Quantity:</label>
+                <input type="text" class="form-control" id="quantity">
+                <span class="error">Valid quantity required</span>
+            </div>
+        </div>
+        <div class="container col-sm-3">
+            <label for="quantity">Measurement:</label>
+            @Html.DropDownListFor(c => c.Measurements, Enum.GetValues(typeof(IngredientsMeasurements)).Cast<IngredientsMeasurements>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }))
+
+
+        </div>
+
+        <div class="container col-sm-2">
+            <br>
+
+            <input type="button" id="add" value="Add" />
+
+
+        </div>
+    </div>
+    <div class="col-sm-12 tablecontainer" id="orderItems">
+        <br>
+
+    </div>
+    <div class="container text-right col-sm-12">
+
+        <input type="button" id="submit" value="Save" />
+    </div>
+    <br />
+</div>
+<div class="container col-sm-6">
+
+</div>
+
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            debugger;
+            $("#ingredientsName").autocomplete({
+                source: '@Url.Action("GetIngredients")'
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @* @Scripts.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/myscripts")*@
+}
+
+
