@@ -64,7 +64,7 @@
                 Description: $('#description').val().trim(),
                 Done: $('#doneRecipe').is(":checked"),
                 Favorites: $('#favouriteRecipe').is(":checked"),
-                //RecipeIngredients: orderItems
+                RecipeIngredients: orderItems
             }
 
             $(this).val('Please wait...');

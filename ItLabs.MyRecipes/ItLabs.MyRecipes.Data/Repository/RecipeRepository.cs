@@ -26,29 +26,29 @@ namespace ItLabs.MyRecipes.Data.Repository
         }
 
 
-        public void Save(Recipe recipe,string term)
+        public void Save(Recipe recipe)
         {
-            var ingredientExists = db.Ingredients.Where(x => x.Name.Equals(term)).SingleOrDefault();
+            //var ingredientExists = db.Ingredients.Where(x => x.Name.Equals(term)).SingleOrDefault();
 
-            if (ingredientExists == null)
+            //if (ingredientExists == null)
+            //{
+            //db.Recipes.Add(new Ingredient);
+            //db.SaveChanges(); 
+            //}
+            //else
+            //{
+
+            if (recipe.Id == 0)
             {
-                //db.Recipes.Add(new Ingredient);
-                //db.SaveChanges(); 
+                db.Recipes.Add(recipe);
             }
             else
             {
+                db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
+            }
+            db.SaveChanges();
 
-                if (recipe.Id == 0)
-                {
-                    db.Recipes.Add(recipe);
-                }
-                else
-                {
-                    db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-
-           }
+            //}
 
             //bool ingredientExists = db.Ingredients.Any(x => x.Name.Equals(term));
             //if (ingredientExists)
@@ -62,7 +62,7 @@ namespace ItLabs.MyRecipes.Data.Repository
             //    return ingredients.Id;
             //}
 
-           
+
         }
         public void Edit(Recipe recipe)
         {
