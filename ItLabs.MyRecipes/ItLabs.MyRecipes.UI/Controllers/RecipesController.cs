@@ -105,23 +105,24 @@ namespace ItLabs.MyRecipes.UI.Controllers
             return View(recipe);
         }
         //GET: Remove
-        public ActionResult Remove(int? Id)
-        {
-            if (Id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Recipe recipe = _recipeManager.FindById(Convert.ToInt32(Id));
-            if (recipe == null)
-            {
-                return HttpNotFound();
-            }
-            return View(recipe);
-        }
+        //public ActionResult Remove(int? Id)
+        //{
+        //    if (Id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Recipe recipe = _recipeManager.FindById(Convert.ToInt32(Id));
+        //    if (recipe == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(recipe);
+        //}
         ////POST: Remove
-        [HttpPost, ActionName("Remove")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int Id)
+        //   [HttpPost, ActionName("Remove")]
+        [HttpPost]
+        //  [ValidateAntiForgeryToken]
+        public ActionResult Delete(int Id)
         {
 
             _recipeManager.Remove(Id);
@@ -133,17 +134,18 @@ namespace ItLabs.MyRecipes.UI.Controllers
         {
             bool status = false;
 
-            //var isValidModel = TryUpdateModel(recipe);
-            //if (isValidModel)
             if (ModelState.IsValid)
             {
                 _recipeManager.Save(recipe);
+                status = true;
+                
             }
             else
             {
                 status = false;
             }
             return new JsonResult { Data = new { status = status } };
+           
         }
         //GET: Edit
         public ActionResult Edit(int id)

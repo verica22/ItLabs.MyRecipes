@@ -28,19 +28,12 @@ namespace ItLabs.MyRecipes.Data.Repository
 
         public void Save(Recipe recipe)
         {
-            //var ingredientExists = db.Ingredients.Where(x => x.Name.Equals(term)).SingleOrDefault();
-
-            //if (ingredientExists == null)
-            //{
-            //db.Recipes.Add(new Ingredient);
-            //db.SaveChanges(); 
-            //}
-            //else
-            //{
-
+            
             if (recipe.Id == 0)
             {
+               
                 db.Recipes.Add(recipe);
+               
             }
             else
             {
@@ -48,22 +41,9 @@ namespace ItLabs.MyRecipes.Data.Repository
             }
             db.SaveChanges();
 
-            //}
-
-            //bool ingredientExists = db.Ingredients.Any(x => x.Name.Equals(term));
-            //if (ingredientExists)
-            //{
-            //    return -1;
-            //}
-            //else
-            //{
-            //    db.Ingredients.Add(ingredients);
-            //    db.SaveChanges();
-            //    return ingredients.Id;
-            //}
-
-
+           
         }
+       
         public void Edit(Recipe recipe)
         {
 

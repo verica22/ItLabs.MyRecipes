@@ -25,12 +25,13 @@
         if (isValidItem) {
             orderItems.push({
                 IngredientName: $('#ingredientsName').val().trim(),
-
                 Quantity: parseInt($('#quantity').val().trim()),
+                IngredientMeasurements: $('#measurementId').val().trim(),
             });
             //Clear fields
             $('#ingredientsName').val('').focus();
             $('#quantity').val('');
+            $('#measurementId').val('');
 
         }
         //populate order items
@@ -64,6 +65,7 @@
                 Description: $('#description').val().trim(),
                 Done: $('#doneRecipe').is(":checked"),
                 Favorites: $('#favouriteRecipe').is(":checked"),
+              //  Measurements: $('#measurementId').val(),
                 RecipeIngredients: orderItems
             }
 
@@ -107,12 +109,13 @@
         debugger;
         if (orderItems.length > 0) {
             var $table = $('<table/>');
-            $table.append('<thead><tr><th>Item</th><th>Quantity</th><th></th></tr></thead>');
+            $table.append('<thead><tr><th>Name</th><th>Quantity</th><th>Measurement</th><th></th></tr></thead>');
             var $tbody = $('<tbody/>');
             $.each(orderItems, function (i, val) {
                 var $row = $('<tr/>');
                 $row.append($('<td/>').html(val.IngredientName));
                 $row.append($('<td/>').html(val.Quantity));
+                $row.append($('<td/>').html(val.IngredientMeasurements));
                 var $remove = $('<a href="#">Remove</a>');
                 $remove.click(function (e) {
                     e.preventDefault();

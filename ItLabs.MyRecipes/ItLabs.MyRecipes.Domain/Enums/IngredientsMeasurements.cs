@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ItLabs.MyRecipes.UI.Enums
+namespace ItLabs.MyRecipes.Domain.Enums
 {
-    public class DropDownModel
-    {
-        public IngredientsMeasurements Measurements { get; set; }
-    }
+ 
     public enum IngredientsMeasurements
     {
         Spoon = 1,
@@ -22,4 +19,5 @@ namespace ItLabs.MyRecipes.UI.Enums
         Number = 9
 
     }
+    //public IngredientsMeasurements Measurements { get; set; }
 }

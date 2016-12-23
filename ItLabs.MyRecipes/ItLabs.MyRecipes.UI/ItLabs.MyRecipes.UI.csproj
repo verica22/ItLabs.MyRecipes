@@ -137,7 +137,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
-    <Compile Include="Enums\IngredientsMeasurements.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,7 +178,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\MyScripts\RecipesAutoComplete.js" />
     <Content Include="Scripts\MyScripts\RecipesGetDetails.js" />
     <Content Include="Scripts\MyScripts\RecipesSave.js" />
     <Content Include="Scripts\respond.js" />
@@ -199,8 +197,6 @@
     <Content Include="Views\Recipes\About.cshtml" />
     <Content Include="Views\Recipes\Contact.cshtml" />
     <Content Include="Views\Recipes\Index.cshtml" />
-    <Content Include="Views\Recipes\Done.cshtml" />
-    <Content Include="Views\Recipes\Favorites.cshtml" />
     <Content Include="Views\Recipes\Remove.cshtml" />
     <Content Include="Views\Recipes\Details.cshtml" />
     <Content Include="Views\Recipes\Create.cshtml" />

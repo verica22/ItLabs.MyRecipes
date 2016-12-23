@@ -19,7 +19,7 @@ namespace ItLabs.MyRecipes.Data
         public bool Done { get; set; }
         public bool Favorites { get; set; }
 
-        //public virtual ICollection<Ingredient> Ingredients { get; set; }
+       // public virtual ICollection<Ingredient> Ingredients { get; set; }
         public virtual ICollection<RecipeIngredients> RecipeIngredients { get; set; }
     }
 }
