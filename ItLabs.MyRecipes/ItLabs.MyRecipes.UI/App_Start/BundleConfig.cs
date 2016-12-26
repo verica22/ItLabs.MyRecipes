@@ -34,7 +34,7 @@ namespace ItLabs.MyRecipes.UI
             bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
                    "~/Scripts/MyScripts/RecipesSave.js",
                    "~/Scripts/MyScripts/RecipesGetDetails.js",
-                   "~/Scripts/MyScripts/RecipesAutoComplete.js"));
+                   "~/Scripts/MyScripts/RecipesEdit.js"));
         }
     }
 }

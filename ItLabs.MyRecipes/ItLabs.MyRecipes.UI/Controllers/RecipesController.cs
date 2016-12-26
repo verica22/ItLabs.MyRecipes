@@ -116,13 +116,14 @@ namespace ItLabs.MyRecipes.UI.Controllers
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(recipe);
+        //    //return View(recipe);
+        //    return View(_recipeManager.FindById(Convert.ToInt32(Id)));
         //}
-        ////POST: Remove
-        //   [HttpPost, ActionName("Remove")]
+        //POST: Remove
+        //[HttpPost, ActionName("Remove")]
         [HttpPost]
         //  [ValidateAntiForgeryToken]
-        public ActionResult Delete(int Id)
+        public ActionResult Remove(int Id)
         {
 
             _recipeManager.Remove(Id);

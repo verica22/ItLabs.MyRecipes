@@ -15,59 +15,83 @@
         <div id="hederNav" class="container text-left col-sm-6">
 
 
-    <div class="col-sm-6">
+            <div class="col-sm-4">
 
-        <p><b>Recipe Name</b></p>
-    </div>
-    <div class="col-sm-2">
+                <p><b>Recipe Name</b></p>
+            </div>
+            <div class="col-sm-2">
+                @*<p>Edit</p>*@
 
-        <p><b>Done</b></p>
-    </div>
-    <div class="col-sm-2">
+            </div>
+            <div class="col-sm-2">
 
-        <p><b>Favorites</b></p>
-    </div>
-    <div class="col-sm-2">
+                <p><b>Done</b></p>
+            </div>
+            <div class="col-sm-2">
 
-        @*<p>Delete</p>*@
-    </div>
+                <p><b>Favorites</b></p>
+            </div>
+            <div class="col-sm-2">
 
-    @if (Model.Count() == 0)
+                @*<p>Delete</p>*@
+            </div>
+            @if (Model.Count() == 0)
             {
-        <div class="container text-left">
-            <div class="col-sm-6">
-                <p><b>No recipes match search criteria</b></p>
-            </div>
-        </div>
-    }
-    else
-    {
-        foreach (var item in Model)
-        {
-            <div class="container text-left">
-                <div class="col-sm-6">
-
-                    <a data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Name)</a>
-
+                <div>
+                    <p>No recipes match search criteria</p>
                 </div>
-                <div class="col-sm-2">
-
-                    @Html.DisplayFor(modelItem => item.Done)
-                </div>
-                <div class="col-sm-2">
-
-                    @Html.DisplayFor(modelItem => item.Favorites)
-                </div>
-                <div class="col-sm-2">
-                    <a href='@Url.Action("Remove", new { id = item.Id })'>
-                        <img src='@Url.Content("~/Photos/IconDelete.png")' />
-                    </a>
-                </div>
-
-            </div>
-            <hr />
             }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    using (Html.BeginForm("Remove", "Recipes", new { id = item.Id }))
+                    {
+                        <div class="container text-left">
+                            <div class="col-sm-4">
+
+                                <label>
+                                    <a data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Name)</a>
+                                </label>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <a data-details-id="@item.Id" data-details-href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+
+                                @Html.DisplayFor(modelItem => item.Done)
+                            </div>
+                            <div class="col-sm-2">
+
+                                @Html.DisplayFor(modelItem => item.Favorites)
+                            </div>
+                            <div class="col-sm-2">
+
+                                @using (Html.BeginForm())
+                        {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="image" src="~/Photos/IconDelete.png" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure?')" />
+
+                                    </div>
+                                }
+                                @*<a href='@Url.Action("Remove", new { id = item.Id })'>
+                                        <img src='@Url.Content("~/Photos/IconDelete.png")' onclick="return confirm('Are you sure?')"/>
+                                    </a>*@
+
+                            </div>
+
+                        </div>
+                        <hr />
+                    }
+                }
+
             }
+
         </div>
         <br />
         <br />
