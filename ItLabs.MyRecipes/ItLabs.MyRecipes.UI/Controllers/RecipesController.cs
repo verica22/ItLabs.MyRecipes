@@ -29,47 +29,18 @@ namespace ItLabs.MyRecipes.UI.Controllers
             return View(_recipeManager.GetRecipes().ToPagedList(pageNumber, pageSize));
         }
         [HttpPost]
-        public ActionResult Search(string Name, bool IsDone, bool IsFavourite, int? page)
+        public ActionResult Search(string name, bool isDone, bool isFavourite, int? page)
         {
-
             int pageNumber = (page ?? 1);
             var recipes = (dynamic)null;
 
-            if (IsDone != false && IsFavourite != false)
-            {
-                recipes = _recipeManager.GetRecipes().Where(r =>
-               r.Done &&
-               r.Favorites &&
-               r.Name.ToLower().Contains(Name))
+            recipes = _recipeManager.GetRecipes().Where(r =>
+               (!isDone || r.Done) &&
+               (!isFavourite || r.Favorites) &&
+               r.Name.ToLower().Contains(name.ToLower()))
               .ToPagedList(pageNumber, pageSize);
 
-            }
-            else if (IsDone != false)
-            {
-                recipes = _recipeManager.GetRecipes().Where(r =>
-                r.Done &&
-                r.Name.ToLower().Contains(Name))
-                .ToPagedList(pageNumber, pageSize);
-
-            }
-            else if (IsFavourite != false)
-            {
-                recipes = _recipeManager.GetRecipes().Where(r =>
-               r.Favorites &&
-               r.Name.ToLower().Contains(Name))
-               .ToPagedList(pageNumber, pageSize);
-
-            }
-            else
-            {
-                recipes = _recipeManager.GetRecipes().Where(r =>
-                r.Name.ToLower().Contains(Name))
-                .ToList().ToPagedList(pageNumber, pageSize);
-
-            }
             return View(recipes);
-
-
         }
 
         ////GET: Detail
@@ -93,36 +64,9 @@ namespace ItLabs.MyRecipes.UI.Controllers
         {
             return View();
         }
-        ////POST: Create
-        [HttpPost]
-        public ActionResult Create(Recipe recipe)
-        {
-            if (ModelState.IsValid)
-            {
-                _recipeManager.Save(recipe);
-                return RedirectToAction("Index");
-            }
-            return View(recipe);
-        }
-        //GET: Remove
-        //public ActionResult Remove(int? Id)
-        //{
-        //    if (Id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Recipe recipe = _recipeManager.FindById(Convert.ToInt32(Id));
-        //    if (recipe == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    //return View(recipe);
-        //    return View(_recipeManager.FindById(Convert.ToInt32(Id)));
-        //}
+        
         //POST: Remove
-        //[HttpPost, ActionName("Remove")]
         [HttpPost]
-        //  [ValidateAntiForgeryToken]
         public ActionResult Remove(int Id)
         {
 

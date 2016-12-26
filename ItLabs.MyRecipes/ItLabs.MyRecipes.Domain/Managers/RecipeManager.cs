@@ -25,31 +25,30 @@ namespace ItLabs.MyRecipes.Domain.Managers
 
         public void Save(Recipe recipe)
         {
-            var addrecipe = new Data.Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
+            //todo for updates
+            var newRecipe = new Data.Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
 
             foreach (var i in recipe.RecipeIngredients.ToList())
             {
-                var ingredientExists = _recipeRepository.GetIngredients().Where(x => x.Name.Equals(i.IngredientName)).SingleOrDefault();
-                if (ingredientExists == null)
+                var existingIngredient = _recipeRepository.GetIngredients().SingleOrDefault(x => x.Name.ToLower()  == i.IngredientName.ToLower());
+
+                if (existingIngredient != null)
                 {
-                    Data.Ingredient ingredient = new Data.Ingredient(){ Name = i.IngredientName,Measurement=i.IngredientMeasurement };
-                    addrecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Ingredient = ingredient, Quantity = i.Quantity });
-                   
+                    newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Quantity = i.Quantity, IngredientsId = existingIngredient.Id });
                 }
                 else
                 {
-                    addrecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Quantity = i.Quantity, IngredientsId = ingredientExists.Id });
+                    var ingredient = new Data.Ingredient() { Name = i.IngredientName, Measurement = i.IngredientMeasurement };
+                    newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Ingredient = ingredient, Quantity = i.Quantity });
                 }
             }
-            var dbRecipe = Mapper.Map<Data.Recipe>(addrecipe);
-            _recipeRepository.Save(dbRecipe);
 
+            var dbRecipe = Mapper.Map<Data.Recipe>(newRecipe);
+            _recipeRepository.Save(dbRecipe);
         }
 
         public void Remove(int Id)
         {
-         
-           
             _recipeRepository.Remove(Id);
         }
         public void Edit(Recipe recipe)
@@ -61,7 +60,6 @@ namespace ItLabs.MyRecipes.Domain.Managers
         {
             var result = _recipeRepository.FindById(Id);
             return Mapper.Map<Recipe>(result);
-
         }
 
         public IEnumerable<Ingredient> GetIngredients()
