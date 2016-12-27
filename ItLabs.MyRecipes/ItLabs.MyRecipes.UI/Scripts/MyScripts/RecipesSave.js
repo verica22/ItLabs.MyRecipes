@@ -115,7 +115,7 @@
                 var $row = $('<tr/>');
                 $row.append($('<td/>').html(val.IngredientName));
                 $row.append($('<td/>').html(val.Quantity));
-                $row.append($('<td/>').html(val.IngredientMeasurements));
+                $row.append($('<td/>').html(val.IngredientMeasurement));
                 var $remove = $('<a href="#">Remove</a>');
                 $remove.click(function (e) {
                     e.preventDefault();

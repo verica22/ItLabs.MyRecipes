@@ -38,6 +38,7 @@ namespace ItLabs.MyRecipes.Data.Repository
             else
             {
                 db.Entry(recipe).State = System.Data.Entity.EntityState.Modified;
+               
             }
             db.SaveChanges();
 

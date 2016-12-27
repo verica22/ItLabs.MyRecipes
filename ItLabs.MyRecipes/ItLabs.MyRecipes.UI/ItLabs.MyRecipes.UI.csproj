@@ -157,6 +157,10 @@
     <Content Include="Photos\add2.png" />
     <Content Include="Photos\delete.png" />
     <Content Include="Photos\DeleteIcon.png" />
+    <Content Include="Photos\Edit.png" />
+    <Content Include="Photos\Edit2.png" />
+    <Content Include="Photos\edit3.png" />
+    <Content Include="Photos\edit4.png" />
     <Content Include="Photos\ImageIngredients.png" />
     <Content Include="Photos\ImageRecipe.png" />
     <Content Include="Photos\left.png" />

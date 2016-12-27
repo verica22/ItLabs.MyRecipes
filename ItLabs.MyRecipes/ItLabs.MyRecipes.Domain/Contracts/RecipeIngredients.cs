@@ -15,6 +15,5 @@ namespace ItLabs.MyRecipes.Domain
        
         public int Quantity { get; set; }
 
-       // public IngredientsMeasurements Measurements { get; set; }
-    }
+       }
 }

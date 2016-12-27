@@ -25,26 +25,61 @@ namespace ItLabs.MyRecipes.Domain.Managers
 
         public void Save(Recipe recipe)
         {
-            //todo for updates
-            var newRecipe = new Data.Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
-
-            foreach (var i in recipe.RecipeIngredients.ToList())
+            var existingRecipe = _recipeRepository.GetRecipes().SingleOrDefault(x => x.Name.ToLower() == recipe.Name.ToLower());
+            //Already exists recipe with this name
+            if (existingRecipe != null)
             {
-                var existingIngredient = _recipeRepository.GetIngredients().SingleOrDefault(x => x.Name.ToLower()  == i.IngredientName.ToLower());
-
-                if (existingIngredient != null)
+               
+            }
+            else
+            {
+                 //todo for updates
+                // recipe.Id = 82;
+                if (recipe.Id == 0)
                 {
-                    newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Quantity = i.Quantity, IngredientsId = existingIngredient.Id });
+                    var newRecipe = new Data.Recipe { Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
+
+                    foreach (var i in recipe.RecipeIngredients.ToList())
+                    {
+                        var existingIngredient = _recipeRepository.GetIngredients().SingleOrDefault(x => x.Name.ToLower() == i.IngredientName.ToLower());
+
+                        if (existingIngredient != null)
+                        {
+                            newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Quantity = i.Quantity, IngredientsId = existingIngredient.Id });
+                        }
+                        else
+                        {
+                            var ingredient = new Data.Ingredient() { Name = i.IngredientName, Measurement = i.IngredientMeasurement };
+                            newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Ingredient = ingredient, Quantity = i.Quantity });
+                        }
+                    }
+                    var dbRecipe = Mapper.Map<Data.Recipe>(newRecipe);
+                    _recipeRepository.Save(dbRecipe);
                 }
                 else
                 {
-                    var ingredient = new Data.Ingredient() { Name = i.IngredientName, Measurement = i.IngredientMeasurement };
-                    newRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Ingredient = ingredient, Quantity = i.Quantity });
-                }
-            }
+                    var editRecipe = new Data.Recipe { Id = recipe.Id, Name = recipe.Name, Description = recipe.Description, Done = recipe.Done, Favorites = recipe.Favorites };
 
-            var dbRecipe = Mapper.Map<Data.Recipe>(newRecipe);
-            _recipeRepository.Save(dbRecipe);
+                    foreach (var i in recipe.RecipeIngredients.ToList())
+                    {
+                        var existingIngredient = _recipeRepository.GetIngredients().SingleOrDefault(x => x.Name.ToLower() == i.IngredientName.ToLower());
+
+                        if (existingIngredient != null)
+                        {
+                            editRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Quantity = i.Quantity, IngredientsId = existingIngredient.Id, RecipeId = recipe.Id });
+                        }
+                        else
+                        {
+                            var ingredient = new Data.Ingredient() { Name = i.IngredientName, Measurement = i.IngredientMeasurement };
+                            editRecipe.RecipeIngredients.Add(new Data.RecipeIngredients { Ingredient = ingredient, Quantity = i.Quantity, RecipeId = recipe.Id });
+                        }
+                    }
+                    var dbRecipe = Mapper.Map<Data.Recipe>(editRecipe);
+                    _recipeRepository.Save(dbRecipe);
+
+                }
+
+            }
         }
 
         public void Remove(int Id)

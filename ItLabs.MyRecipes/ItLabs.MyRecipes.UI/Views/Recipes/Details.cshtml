@@ -54,6 +54,7 @@
                         {
                             <span>@item.IngredientName - </span>
                             <span>@item.Quantity </span>
+                            //Enum.GetName(typeof(IngredientsMeasurements), value);
                             <span>@item.IngredientMeasurement</span>
                                 <br />
                         }
@@ -67,7 +68,7 @@
 <div class="container text-right">
     <p>
        
-            <a data-edit-id="@Model.Id" data-edit-href="@Url.Action("Edit", new { id = Model.Id })">Edit</a>
+            @*<a data-edit-id="@Model.Id" data-edit-href="@Url.Action("Edit", new { id = Model.Id })">Edit</a>*@
        
         @*<label>
             <a data-details-id="@Model.Id" data-details-href="@Url.Action("Edit", new { id = Model.Id })">@Html.DisplayFor(modelItem => Model.Name)</a>

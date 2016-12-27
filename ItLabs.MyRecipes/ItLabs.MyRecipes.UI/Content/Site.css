@@ -71,3 +71,7 @@ dl{
 .descriptionEdit{
  height: 350px; 
 }
+a:hover{ 
+ cursor:pointer
+
+}

@@ -17,14 +17,11 @@
         <div id="hederNav" class="container text-left col-sm-6">
 
 
-            <div class="col-sm-4">
+            <div class="col-sm-6">
 
                 <p><b>Recipe Name</b></p>
             </div>
-            <div class="col-sm-2">
-                @*<p>Edit</p>*@
-
-            </div>
+           
             <div class="col-sm-2">
 
                 <p><b>Done</b></p>
@@ -33,7 +30,11 @@
 
                 <p><b>Favorites</b></p>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-1">
+                @*<p>Edit</p>*@
+
+            </div>
+            <div class="col-sm-1">
 
                 @*<p>Delete</p>*@
             </div>
@@ -50,18 +51,14 @@
                     using (Html.BeginForm("Remove", "Recipes", new { id = item.Id }))
                     {
                         <div class="container text-left">
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
 
                                 <label>
-                                    <a data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Name)</a>
+                                    <a title="Details" data-details-id="@item.Id" data-details-href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Name)</a>
                                 </label>
 
                             </div>
-                            <div class="col-sm-2">
-                                <label>
-                                    <a data-details-id="@item.Id" data-details-href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
-                                </label>
-                            </div>
+                            
                             <div class="col-sm-2">
 
                                 @Html.DisplayFor(modelItem => item.Done)
@@ -70,14 +67,19 @@
 
                                 @Html.DisplayFor(modelItem => item.Favorites)
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
+                                <label>
+                                    <a title="Edit" data-details-id="@item.Id" data-details-href="@Url.Action("Edit", new { id = item.Id })"><img src="~/Photos/Edit.png" width="30px" height="30px"></a>
+                                </label>
+                            </div>
+                            <div class="col-sm-1">
 
                                 @using (Html.BeginForm())
                         {
                                     @Html.AntiForgeryToken()
 
                                     <div class="form-actions no-color">
-                                        <input type="image" src="~/Photos/IconDelete.png" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure?')" />
+                                        <input type="image" src="~/Photos/IconDelete.png" title="Delete" width="40px" height="30px" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure?')" />
 
                                     </div>
                                 }

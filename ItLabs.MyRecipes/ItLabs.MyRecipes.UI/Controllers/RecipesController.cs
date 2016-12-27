@@ -102,7 +102,7 @@ namespace ItLabs.MyRecipes.UI.Controllers
                 return HttpNotFound();
             return View(recipe);
         }
-        //POST: Edit
+        ////POST: Edit
         [HttpPost]
         public ActionResult Edit(Recipe recipe)
         {

@@ -1,5 +1,6 @@
 ﻿using ItLabs.MyRecipes.Domain.Enums;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ItLabs.MyRecipes.Domain
 {
@@ -11,7 +12,7 @@ namespace ItLabs.MyRecipes.Domain
         }
 
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Done { get; set; }
@@ -21,6 +22,6 @@ namespace ItLabs.MyRecipes.Domain
 
         //public virtual List<Ingredient> Ingredient { get; set; }
 
-        public IngredientsMeasurements Measurements { get; set; }
+        //public IngredientsMeasurements Measurements { get; set; }
     }
 }

@@ -52,11 +52,16 @@
         </div>
         <div class="container col-sm-4">
             <label for="quantity">Measurement:</label>
-            @Html.DropDownListFor(c => c.Measurements, Enum.GetValues(typeof(IngredientsMeasurements)).Cast<IngredientsMeasurements>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), new { @id = "measurementId", @class = "btn btn-primary dropdown-toggle" })
-           @* <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Measurement
-           <span class="caret"></span></button>*@
+            @* @Html.DropDownListFor(c => c.Measurements,Enum.GetValues(typeof(IngredientsMeasurements))
+                .Cast<IngredientsMeasurements>().Select(c => new SelectListItem { Text = c.ToString(),
+                 Value = c.ToString() }),new { @id = "measurementId",@class = "btn btn-primary dropdown-toggle" })*@
+            @Html.DropDownList("IngredientsMeasurements",
+        EnumHelper.GetSelectList(typeof(IngredientsMeasurements)),"Select Measurment",
+      new { @class = "form-control", @id = "measurementId" })
 
-</div>
+
+
+        </div>
 
         <div class="container col-sm-1">
             <br>
@@ -82,8 +87,8 @@
 
 
 @*<div>
-    @Html.ActionLink("Back to MyRecipes", "Index")
-</div>*@
+        @Html.ActionLink("Back to MyRecipes", "Index")
+    </div>*@
 
 @section Scripts {
     <script type="text/javascript">
